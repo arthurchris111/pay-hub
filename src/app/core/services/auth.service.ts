@@ -26,4 +26,8 @@ export class AuthService {
       createUserWithEmailAndPassword(this.auth, email, password)
     ).pipe(catchError((err: any) => throwError(() => err)));
   }
+
+  public logout(): Observable<any> {
+    return from(this.auth.signOut());
+  }
 }
