@@ -20,4 +20,10 @@ export class AuthService {
       catchError((err: any) => throwError(() => err))
     );
   }
+
+  public signup(email: string, password: string) {
+    return from(
+      createUserWithEmailAndPassword(this.auth, email, password)
+    ).pipe(catchError((err: any) => throwError(() => err)));
+  }
 }
