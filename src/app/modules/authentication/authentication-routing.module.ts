@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthenticationComponent } from './authentication.component';
 import { LoginComponent } from './login/login.component';
 import { CreateCardFormComponent } from './create-card-form/create-card-form.component';
+import { LayoutComponent } from 'src/app/layout/layout.component';
 
 const routes: Routes = [
   {
@@ -10,9 +11,8 @@ const routes: Routes = [
     component: AuthenticationComponent,
     children: [
       { path: 'login', component: LoginComponent },
-      { path: 'signup', component: CreateCardFormComponent },
-      // { path: '', component: HomeComponent },
-      // { path: '***', redirectTo: '' },
+      { path: 'create', component: CreateCardFormComponent },
+      { path: '***', redirectTo: 'login' },
     ],
   },
 ];
