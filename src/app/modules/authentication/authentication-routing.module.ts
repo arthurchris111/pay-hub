@@ -8,7 +8,7 @@ import { LayoutComponent } from 'src/app/layout/layout.component';
 const routes: Routes = [
   {
     path: '',
-    component: AuthenticationComponent,
+    component: LayoutComponent,
     children: [
       { path: 'login', component: LoginComponent },
       { path: 'create', component: CreateCardFormComponent },
