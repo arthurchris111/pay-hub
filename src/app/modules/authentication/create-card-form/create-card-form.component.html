@@ -1,1 +1,133 @@
-<p class="text-danger">create-card-form works!</p>
+<div class="container-fluid bg mt-5">
+  <div class="container">
+    <div class="row centered d-flex justify-content-center align-items-center">
+      <div class="col-lg-4">
+        <div class=" mt-5">
+          <div class="text-light">
+            <h1>Get started</h1>
+            <p class="complete">Complete the form to gain instant access <br> to your account and receive your card</p>
+          </div>
+          <form [formGroup]="cardForm" (ngSubmit)="onSubmit()" class="p-2">
+            <div class="row">
+              <div class="col-lg-6">
+                <label for="firstName" class="form-label">First Name</label>
+                <div class="form-item mb-3">
+                  <input type="text" autocomplete="off" id="firstname" name="firstName"
+                    [ngClass]="{'invalid-border':formControl.firstName?.errors && submitted, 'valid-border':formControl.firstName.valid}"
+                    class="form-control form-text-field shadow-none" formControlName="firstName" placeholder="">
+                  <div class="error" *ngIf="(cardForm.get('firstName')?.invalid && submitted)">
+                    <small class="text-danger" *ngIf="cardForm.get('firstName')?.errors?.['required'] ">
+                      First name required
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <label for="lastName" class="form-label">Last Name</label>
+                <div class="form-item mb-3">
+                  <input type="text" autocomplete="off" id="lastName" name="lastName"
+                    [ngClass]="{'invalid-border':formControl.lastName?.errors && submitted, 'valid-border':formControl.lastName.valid}"
+                    class="form-control form-text-field  shadow-none" formControlName="lastName" placeholder="">
+                  <div class="error" *ngIf="(cardForm.get('lastName')?.invalid && submitted)">
+                    <small class="text-danger" *ngIf="cardForm.get('lastName')?.errors?.['required'] ">
+                      Last name required
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <label for="email" class="form-label">Email</label>
+            <div class="form-item mb-3">
+              <input type="text" autocomplete="off" id="email" name="email"
+                [ngClass]="{'invalid-border':formControl.email?.errors && submitted, 'valid-border':formControl.email.valid}"
+                class="form-control form-text-field  shadow-none" formControlName="email" placeholder="">
+              <div class="error" *ngIf="(cardForm.get('email')?.invalid && submitted)">
+                <small class="text-danger" *ngIf="cardForm.get('email')?.errors?.['required'] ">
+                  Email required
+                </small>
+                <small class="text-danger" *ngIf="cardForm.get('email')?.errors?.['pattern']">
+                  Invalid email
+                </small>
+              </div>
+            </div>
+
+            <label for="password" class="form-label">Password</label>
+            <div class="form-item mb-3">
+              <input type="password" autocomplete="off" id="password" name="password"
+                [ngClass]="{'invalid-border':formControl.password?.errors && submitted, 'valid-border':formControl.password.valid}"
+                class="form-control form-text-field  shadow-none" formControlName="password" placeholder="">
+              <div class="error" *ngIf="(cardForm.get('password')?.invalid && submitted)">
+                <small class="text-danger" *ngIf="cardForm.get('password')?.errors?.['required'] ">
+                  Password required
+                </small>
+              </div>
+            </div>
+
+            <label for="date" class="form-label">Date Of Birth</label>
+            <div class="form-item mb-3">
+              <input type="date" autocomplete="off" id="date" name="date"
+                [ngClass]="{'invalid-border':formControl.date?.errors && submitted, 'valid-border':formControl.date.valid}"
+                class="form-control form-text-field  shadow-none enchilada" formControlName="date" placeholder="">
+              <div class="error" *ngIf="(cardForm.get('date')?.invalid && submitted)">
+                <small class="text-danger" *ngIf="cardForm.get('date')?.errors?.['required'] ">
+                  Date of birth required
+                </small>
+              </div>
+            </div>
+
+            <label for="cardType" class="form-label">Select card type</label>
+            <div class="form-item mb-3">
+              <select class="custom-select p-3 w-100 shadow-none form-control form-text-field "
+                [ngClass]="{'invalid-border':formControl.cardType?.errors && submitted, 'valid-border':formControl.cardType.valid}"
+                (change)="changeCard($event)" formControlName="cardType" placeholder="Select a card type">
+                <option class="p-4 selected bg-dark option" *ngFor="let card of Cards" [ngValue]="card">{{card}}
+                </option>
+              </select>
+              <div class="error" *ngIf="(cardForm.get('cardType')?.invalid && submitted)">
+                <small class="text-danger" *ngIf="cardForm.get('cardType')?.errors?.['required'] ">
+                  Card type required
+                </small>
+              </div>
+            </div>
+
+            <label for="idNumber" class="form-label">ID Number</label>
+            <div class="form-item mb-3">
+              <input type="text" autocomplete="off" id="idNumber" name="idNumber"
+                [ngClass]="{'invalid-border':formControl.idNumber?.errors && submitted, 'valid-border':formControl.idNumber.valid}"
+                class="form-control form-text-field  shadow-none" formControlName="idNumber" placeholder="">
+              <div class="error" *ngIf="(cardForm.get('idNumber')?.invalid && submitted)">
+                <small class="text-danger" *ngIf="cardForm.get('idNumber')?.errors?.['required'] ">
+                  ID number required
+                </small>
+              </div>
+            </div>
+
+            <label for="file" class="form-label">Upload ID</label>
+            <div class="mb-3">
+              <input type="file" class="shadow-none rounded-3 form-control" accept=".png, .jpg, .jpeg"
+                formControlName="uploadCard"
+                [ngClass]="{'invalid-border':formControl.uploadCard?.errors && submitted, 'valid-border':formControl.uploadCard.valid}">
+              <div class="error" *ngIf="(cardForm.get('uploadCard')?.invalid && submitted)">
+                <small class="text-danger" *ngIf="cardForm.get('uploadCard')?.errors?.['required'] ">
+                  ID upload required
+                </small>
+              </div>
+            </div>
+
+            <!-- button -->
+            <button class="btn btn-dark w-100 shadow-none rounded-pill mt-3" type="submit">Continue</button>
+            <div class="mt-3 mb-5">
+              <div class="d-flex justify-content-start">
+                <p class="account"> Already have an account?
+                  <a [routerLink]="['/login']" routerLinkActive="router-link-active"
+                    class="text-decoration-none text-light fw-bold ">Login</a>
+                </p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
