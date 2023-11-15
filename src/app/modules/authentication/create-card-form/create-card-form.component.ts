@@ -1,6 +1,8 @@
+import { AuthService } from './../../../core/services/auth/auth.service';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UsersService } from 'src/app/core/services/user/users.service';
 
 @Component({
   selector: 'app-create-card-form',
@@ -14,7 +16,12 @@ export class CreateCardFormComponent {
   image: any;
   cardName: any;
 
-  constructor(private formBuilder: FormBuilder, private route: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: Router,
+    private usersService: UsersService,
+    private authService: AuthService
+  ) {}
 
   buildCardForm(): void {
     this.cardForm = this.formBuilder.group({
@@ -53,11 +60,22 @@ export class CreateCardFormComponent {
   onSubmit() {
     this.submitted = true;
     this.isFetching = true;
+    const { firstName, lastName, email, password } = this.cardForm.value;
 
     // if (this.cardForm.invalid) {
     //   return;
     // }
 
-    // console.log(this.cardForm.value);
+    // Send firstName lastName,email,password to firebase
+    this.usersService.create({ firstName, lastName, email, password });
+
+    // signing up with email and password
+    this.authService.signup(email, password).subscribe({
+      next: (res: any) => {
+        this.route.navigate(['/login']);
+      },
+    });
+
+    console.log(this.cardForm.value);
   }
 }
