@@ -9,7 +9,9 @@ import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
+import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { getAuth, provideAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [AppComponent, AddCardUserComponent],
@@ -19,7 +21,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideStorage(() => getStorage()),
     provideFirestore(() => getFirestore()),
+    // add this
+    provideAuth(() => getAuth()),
     AngularFireModule.initializeApp(firebaseConfig),
+    RouterModule,
     NgbModule,
   ],
   providers: [],

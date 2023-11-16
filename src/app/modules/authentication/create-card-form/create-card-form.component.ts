@@ -36,7 +36,9 @@ export class CreateCardFormComponent {
     private authService: AuthService,
     private storage: Storage,
     private db: AngularFirestore
-  ) {}
+  ) {
+    this.getImages();
+  }
 
   buildCardForm(): void {
     this.cardForm = this.formBuilder.group({
@@ -73,37 +75,37 @@ export class CreateCardFormComponent {
   }
 
   // uploading fire to firebase
-  // public uploadFile(input: HTMLInputElement) {
-  //   if (!input.files) return;
+  public uploadFile(input: HTMLInputElement) {
+    if (!input.files) return;
 
-  //   const files: FileList = input.files;
-  //   console.error(files);
+    const files: FileList = input.files;
+    console.error(files);
 
-  //   if (files.length) {
-  //     const storageRef = ref(this.storage, files[0].name);
-  //     uploadBytesResumable(storageRef, files[0]).then(async () => {
-  //       this.imageUrl = await getDownloadURL(storageRef);
-  //     });
-  //   }
-  // }
+    if (files.length) {
+      const storageRef = ref(this.storage, files[0].name);
+      uploadBytesResumable(storageRef, files[0]).then(async () => {
+        this.imageUrl = await getDownloadURL(storageRef);
+      });
+    }
+  }
 
-  // private getImages(): void {
-  //   this.db
-  //     .collection(this.path)
-  //     .snapshotChanges()
-  //     .subscribe((res: any) => {
-  //       console.log('User', res);
-  //     });
-  // }
+  private getImages(): void {
+    this.db
+      .collection(this.path)
+      .snapshotChanges()
+      .subscribe((res: any) => {
+        console.log('User', res);
+      });
+  }
 
   onSubmit() {
     this.submitted = true;
     this.isFetching = true;
-    const { firstName, lastName, email, password } = this.cardForm.value;
 
     // if (this.cardForm.invalid) {
     //   return;
     // }
+    const { firstName, lastName, email, password } = this.cardForm.value;
 
     // Send firstName lastName,email,password to firebase
     this.usersService.create({ firstName, lastName, email, password });

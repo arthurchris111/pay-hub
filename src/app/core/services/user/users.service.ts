@@ -1,22 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  AngularFireDatabase,
-  AngularFireList,
-} from '@angular/fire/compat/database';
-import {
-  Firestore,
-  collection,
-  deleteDoc,
-  doc,
-  docData,
-  getDoc,
-  setDoc,
-  updateDoc,
-} from '@angular/fire/firestore';
-import { AuthService } from '../auth/auth.service';
-import { Observable, from, of, switchMap } from 'rxjs';
 import { ProfileUser } from '../../../modal/user';
-import { HttpClient } from '@angular/common/http';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
@@ -30,12 +13,7 @@ export class UsersService {
   private path = 'Users';
   private apiUrl = '';
 
-  constructor(
-    private firestore: Firestore,
-    private authServices: AuthService,
-    private http: HttpClient,
-    private db: AngularFirestore
-  ) {
+  constructor(private db: AngularFirestore) {
     this.profileUserRef = db.collection(this.path);
   }
 

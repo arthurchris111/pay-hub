@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+
 
 body {
   background-color: #111318 !important;
@@ -61,3 +60,6 @@ input::file-selector-button {
 .account {
   color: #98a2b3;
 }
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';

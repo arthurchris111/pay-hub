@@ -21,5 +21,6 @@ const component = [
     ReactiveFormsModule,
     LayoutModule,
   ],
+  providers: [],
 })
 export class AuthenticationModule {}
