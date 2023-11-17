@@ -117,7 +117,7 @@ export class CreateCardFormComponent {
 
     const { firstName, lastName, email, password } = this.cardForm.value;
 
-    // Send firstName lastName,email,password to firebase
+    // Send firstName lastName,email and password to firebase
     this.usersService.create({ firstName, lastName, email, password });
 
     // signing up with email and password
