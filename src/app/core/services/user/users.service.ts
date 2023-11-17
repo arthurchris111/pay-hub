@@ -4,17 +4,23 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  // bitnob API URL
   profileUserRef: AngularFirestoreCollection<ProfileUser>;
   private path = 'Users';
   private apiUrl = '';
 
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore, private http: HttpClient) {
     this.profileUserRef = db.collection(this.path);
+  }
+
+  userDataToBitnob(user: ProfileUser): Observable<any> {
+    return this.http.post(this.apiUrl, user);
   }
 
   get(): any {
