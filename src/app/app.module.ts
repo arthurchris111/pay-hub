@@ -12,6 +12,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { getAuth, provideAuth } from '@angular/fire/auth';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, AddCardUserComponent],
@@ -26,6 +27,7 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
     AngularFireModule.initializeApp(firebaseConfig),
     RouterModule,
     NgbModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

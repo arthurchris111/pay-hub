@@ -12,6 +12,7 @@ import {
 } from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
+import { ProfileUser } from 'src/app/modal/user';
 
 @Component({
   selector: 'app-create-card-form',
@@ -105,6 +106,15 @@ export class CreateCardFormComponent {
     // if (this.cardForm.invalid) {
     //   return;
     // }
+
+    //  Send data to bitnob to create card
+    this.usersService.userDataToBitnob(this.cardForm.value).subscribe(() => {
+      console.log('data sent successfully'),
+        (error: Error) => {
+          console.error('Error sending data:', error);
+        };
+    });
+
     const { firstName, lastName, email, password } = this.cardForm.value;
 
     // Send firstName lastName,email,password to firebase
