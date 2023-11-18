@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private toastr: ToastrService
   ) {}
 
   buildLoginForm(): void {
@@ -43,6 +45,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.login.value.invalid) {
+      this.toastr.error('Please enter both email and password');
       return;
     }
 
@@ -54,8 +57,12 @@ export class LoginComponent implements OnInit {
         this.route.navigate(['/home']);
       },
       error: (error: any) => {
-        // console.log(error);
-        //  this.toastr.error(error, 'Login');
+        console.log(error);
+        if (error.code === 'auth/invalid-email') {
+          this.toastr.error('Invalid email');
+        } else if (error.code === 'INVALID_LOGIN_CREDENTIALS') {
+          this.toastr.error('Unable to login with provided credentials');
+        }
       },
     });
     console.log(this.login.value);
