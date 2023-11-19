@@ -60,8 +60,10 @@ export class LoginComponent implements OnInit {
         console.log(error);
         if (error.code === 'auth/invalid-email') {
           this.toastr.error('Invalid email');
-        } else if (error.code === 'INVALID_LOGIN_CREDENTIALS') {
+        } else if (error.code === 'auth/invalid-login-credentials') {
           this.toastr.error('Unable to login with provided credentials');
+        } else {
+          this.toastr.error('Enter a valid email and password');
         }
       },
     });
