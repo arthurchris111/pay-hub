@@ -13,3 +13,12 @@
 .fs-20{
   font-size: 18px;
 }
+
+
+.navbar-nav .nav-link.active {
+  color: rgb(92, 92, 92) !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: unset !important;
+}
