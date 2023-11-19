@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  show: boolean = false;
+
   toggleMenu() {
+    this.show = !this.show;
     document.getElementById('navbarSupportedContent')?.classList.toggle('show');
   }
 
