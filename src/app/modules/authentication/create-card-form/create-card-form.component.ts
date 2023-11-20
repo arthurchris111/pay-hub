@@ -134,6 +134,7 @@ export class CreateCardFormComponent {
         }
       },
     });
+
     console.log(this.cardForm.value);
   }
 }
