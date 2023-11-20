@@ -67,6 +67,8 @@ export class CreateCardFormComponent {
     this.buildCardForm();
   }
 
+  toggleLoading() {}
+
   get formControl(): any {
     return this.cardForm.controls;
   }

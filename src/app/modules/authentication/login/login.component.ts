@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginComponent implements OnInit {
   login!: FormGroup;
   submitted: boolean = false;
+  isLoading: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -44,11 +45,18 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    this.isLoading = true;
+
     const { email, password } = this.login.value;
 
     if (!email || !password) {
       return;
     }
+
+    setTimeout(() => {
+      this.isLoading = false;
+      console.log('User logged in!');
+    }, 200);
 
     this.authService.login(email, password).subscribe({
       next: (res: any) => {
