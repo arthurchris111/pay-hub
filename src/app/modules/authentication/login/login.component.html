@@ -32,8 +32,8 @@
             </small>
           </div>
         </div>
-        <button [disabled]="isLoading" class="btn btn-dark w-100 shadow-none rounded-pill mt-3" type="submit">Login
-          <!-- <span *ngIf="!isLoading"></span> -->
+        <button [disabled]="isLoading" class="btn btn-dark w-100 shadow-none rounded-pill mt-3" type="submit">
+          <span *ngIf="!isLoading">Login</span>
           <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         </button>
         <div class="mt-3 mb-5">
