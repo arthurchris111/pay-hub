@@ -44,12 +44,11 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    if (this.login.value.invalid) {
-      this.toastr.error('Please enter both email and password');
+    const { email, password } = this.login.value;
+
+    if (!email || !password) {
       return;
     }
-
-    const { email, password } = this.login.value;
 
     this.authService.login(email, password).subscribe({
       next: (res: any) => {

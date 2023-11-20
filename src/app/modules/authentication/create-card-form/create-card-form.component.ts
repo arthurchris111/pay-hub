@@ -13,6 +13,7 @@ import {
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { ProfileUser } from 'src/app/modal/user';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create-card-form',
@@ -36,7 +37,8 @@ export class CreateCardFormComponent {
     private usersService: UsersService,
     private authService: AuthService,
     private storage: Storage,
-    private db: AngularFirestore
+    private db: AngularFirestore,
+    private toastr: ToastrService
   ) {
     this.getImages();
   }
@@ -103,9 +105,9 @@ export class CreateCardFormComponent {
     this.submitted = true;
     this.isFetching = true;
 
-    // if (this.cardForm.invalid) {
-    //   return;
-    // }
+    if (this.cardForm.invalid) {
+      return;
+    }
 
     //  Send data to bitnob to create card
     this.usersService.userDataToBitnob(this.cardForm.value).subscribe(() => {
@@ -123,10 +125,15 @@ export class CreateCardFormComponent {
     // signing up with email and password
     this.authService.signup(email, password).subscribe({
       next: (res: any) => {
-        this.route.navigate(['/login']);
+        this.route.navigate(['/auth/login']);
+      },
+      error: (error: any) => {
+        console.log(error);
+        if (error.code === 'auth/email-already-in-use') {
+          this.toastr.error('Email already exist');
+        }
       },
     });
-
     console.log(this.cardForm.value);
   }
 }
