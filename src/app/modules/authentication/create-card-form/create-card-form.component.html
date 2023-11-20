@@ -58,6 +58,9 @@
                 <small class="text-danger" *ngIf="cardForm.get('password')?.errors?.['required'] ">Password
                   required
                 </small>
+                <small class="text-danger" *ngIf="cardForm.get('password')?.errors?.['minlength']">
+                  Characters must be more than 6
+                </small>
               </div>
             </div>
 

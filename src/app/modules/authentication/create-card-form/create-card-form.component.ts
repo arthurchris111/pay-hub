@@ -55,7 +55,7 @@ export class CreateCardFormComponent {
           Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
         ],
       ],
-      password: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       date: ['', [Validators.required]],
       idNumber: ['', [Validators.required]],
       cardType: ['', [Validators.required]],
