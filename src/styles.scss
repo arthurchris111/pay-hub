@@ -1,18 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import 'ngx-toastr/toastr';
+@import "ngx-toastr/toastr";
 /* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+@import "bootstrap/scss/bootstrap";
 
 body {
   background-color: #111318 !important;
 }
 
-
 .pt-10 {
   padding-top: 5% !important;
 }
-
 
 .complete {
   color: #98a2b3;
@@ -50,7 +48,6 @@ input::file-selector-button {
   margin-bottom: 80px;
 }
 
-
 .invalid-border {
   border: 0.1px solid #ff1d1d !important;
 }
@@ -63,11 +60,13 @@ input::file-selector-button {
   color: #98a2b3;
 }
 
+// @media only screen and (max-width: 992px) {
+// .faq {
+//     margin-left: -25px;
+//   }
 
-
-@media only screen and (max-width: 992px) {
-.faq {
-    margin-left: -25px;
-  }
-
+// }
+#toast-container {
+  display: flex !important;
+  justify-content: center !important;
 }

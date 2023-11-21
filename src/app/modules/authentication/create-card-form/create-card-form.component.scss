@@ -1,10 +1,10 @@
 .form-text-field {
-  height: 40px;
+  height: 47px;
+  line-height: 13px;
   color: #fff;
   background-color: transparent;
   border: 1px solid #667085;
   border-radius: 8px;
-  // margin-bottom: 24px;
   padding-left: 14px;
   padding-right: 14px;
   font-size: 16px;
@@ -71,3 +71,10 @@ input[type=date]::-webkit-calendar-picker-indicator {
 }
 
 
+input[type="file"] {
+  height: 45px;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  height: 45px;
+}

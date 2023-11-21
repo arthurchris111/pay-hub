@@ -32,7 +32,7 @@
             </small>
           </div>
         </div>
-        <button [disabled]="isLoading" class="btn btn-dark w-100 shadow-none rounded-pill mt-3" type="submit">
+        <button [disabled]="isLoading" class="btn btn-dark w-100 shadow-none mt-3 p-2" type="submit">
           <span *ngIf="!isLoading">Login</span>
           <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         </button>
