@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
     const { email, password } = this.login.value;
 
     if (!email || !password) {
