@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.isLoading = true;
 
     const { email, password } = this.login.value;
 
@@ -53,10 +52,10 @@ export class LoginComponent implements OnInit {
       return;
     }
 
+    this.isLoading = true;
     setTimeout(() => {
       this.isLoading = false;
-      console.log('User logged in!');
-    }, 200);
+    }, 600);
 
     this.authService.login(email, password).subscribe({
       next: (res: any) => {
