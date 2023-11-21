@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   login!: FormGroup;
   submitted: boolean = false;
   isLoading: boolean = false;
+  show: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,6 +38,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildLoginForm();
+  }
+
+  passwordToggle() {
+    this.show = !this.show;
   }
 
   get formControl(): any {

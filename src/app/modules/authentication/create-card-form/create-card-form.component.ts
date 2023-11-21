@@ -24,6 +24,7 @@ export class CreateCardFormComponent {
   cardForm!: FormGroup;
   submitted: boolean = false;
   isFetching: boolean = false;
+  show: boolean = false;
   image: any;
   cardName: any;
   private path = 'Users';
@@ -65,6 +66,10 @@ export class CreateCardFormComponent {
 
   ngOnInit(): void {
     this.buildCardForm();
+  }
+
+  passwordToggle() {
+    this.show = !this.show;
   }
 
   toggleLoading() {}
