@@ -56,11 +56,14 @@ export class CreateCardFormComponent {
           Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
         ],
       ],
+      cardBrand: ['', [Validators.required]],
+      card: ['', [Validators.required]],
+      amount: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      date: ['', [Validators.required]],
-      idNumber: ['', [Validators.required]],
-      cardType: ['', [Validators.required]],
-      uploadCard: [null, [Validators.required]],
+      // date: ['', [Validators.required]],
+      // idNumber: ['', [Validators.required]],
+      // cardType: ['', [Validators.required]],
+      // uploadCard: [null, [Validators.required]],
     });
   }
 
@@ -78,26 +81,26 @@ export class CreateCardFormComponent {
     return this.cardForm.controls;
   }
 
-  Cards: any = ['Voters ID', 'Ghana card'];
+  // Cards: any = ['Voters ID', 'Ghana card'];
 
-  changeCard(e: any) {
-    this.cardName?.setValue(e.target.value, {});
-  }
+  // changeCard(e: any) {
+  //   this.cardName?.setValue(e.target.value, {});
+  // }
 
   // uploading fire to firebase
-  public uploadFile(input: HTMLInputElement) {
-    if (!input.files) return;
+  // public uploadFile(input: HTMLInputElement) {
+  //   if (!input.files) return;
 
-    const files: FileList = input.files;
-    console.error(files);
+  //   const files: FileList = input.files;
+  //   console.error(files);
 
-    if (files.length) {
-      const storageRef = ref(this.storage, files[0].name);
-      uploadBytesResumable(storageRef, files[0]).then(async () => {
-        this.imageUrl = await getDownloadURL(storageRef);
-      });
-    }
-  }
+  //   if (files.length) {
+  //     const storageRef = ref(this.storage, files[0].name);
+  //     uploadBytesResumable(storageRef, files[0]).then(async () => {
+  //       this.imageUrl = await getDownloadURL(storageRef);
+  //     });
+  //   }
+  // }
 
   private getImages(): void {
     this.db

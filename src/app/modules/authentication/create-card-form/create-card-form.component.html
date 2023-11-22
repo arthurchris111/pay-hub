@@ -48,6 +48,40 @@
               </div>
             </div>
 
+            <label for="email" class="form-label">Card Brand</label>
+            <div class="form-item mb-3">
+              <input type="text" autocomplete="off" id="cardBrand" name="cardBrand"
+                [ngClass]="{'invalid-border':formControl.cardBrand?.errors && submitted, 'valid-border':formControl.cardBrand.valid}"
+                class="form-control form-text-field  shadow-none" formControlName="cardBrand" placeholder="visa">
+              <div class="error" *ngIf="(cardForm.get('cardBrand')?.invalid && submitted)">
+                <small class="text-danger" *ngIf="cardForm.get('cardBrand')?.errors?.['required'] ">Card brand
+                  required</small>
+              </div>
+            </div>
+
+            <label for="email" class="form-label">Card</label>
+            <div class="form-item mb-3">
+              <input type="text" autocomplete="off" id="card" name="card"
+                [ngClass]="{'invalid-border':formControl.card?.errors && submitted, 'valid-border':formControl.card.valid}"
+                class="form-control form-text-field  shadow-none" formControlName="card" placeholder="giftcard">
+              <div class="error" *ngIf="(cardForm.get('card')?.invalid && submitted)">
+                <small class="text-danger" *ngIf="cardForm.get('card')?.errors?.['required'] ">Card brand
+                  required</small>
+              </div>
+            </div>
+
+            <label for="idNumber" class="form-label">Amount</label>
+            <div class="form-item mb-3">
+              <input type="text" autocomplete="off" id="amount" name="amount"
+                [ngClass]="{'invalid-border':formControl.amount?.errors && submitted, 'valid-border':formControl.amount.valid}"
+                class="form-control form-text-field  shadow-none" formControlName="amount" placeholder="1000">
+              <div class="error" *ngIf="(cardForm.get('amount')?.invalid && submitted)">
+                <small class="text-danger" *ngIf="cardForm.get('amount')?.errors?.['required'] ">
+                  Amount required
+                </small>
+              </div>
+            </div>
+
             <label for="password" class="form-label">Password</label>
             <div class="form-item mb-3">
               <input [type]="show?'text':'password'" autocomplete="off" id="password" name="password"
@@ -69,7 +103,7 @@
               </div>
             </div>
 
-            <label for="date" class="form-label">Date Of Birth</label>
+            <!-- <label for="date" class="form-label">Date Of Birth</label>
             <div class="form-item mb-3">
               <input type="date" autocomplete="off" id="date" name="date"
                 [ngClass]="{'invalid-border':formControl.date?.errors && submitted, 'valid-border':formControl.date.valid}"
@@ -79,9 +113,9 @@
                   Date of birth required
                 </small>
               </div>
-            </div>
+            </div> -->
 
-            <label for="cardType" class="form-label">Select card type</label>
+            <!-- <label for="cardType" class="form-label">Select card type</label>
             <div class="form-item mb-3">
               <select class="custom-select p-3 w-100 shadow-none form-control form-text-field "
                 [ngClass]="{'invalid-border':formControl.cardType?.errors && submitted, 'valid-border':formControl.cardType.valid}"
@@ -94,9 +128,9 @@
                   Card type required
                 </small>
               </div>
-            </div>
+            </div> -->
 
-            <label for="idNumber" class="form-label">ID Number</label>
+            <!-- <label for="idNumber" class="form-label">ID Number</label>
             <div class="form-item mb-3">
               <input type="text" autocomplete="off" id="idNumber" name="idNumber"
                 [ngClass]="{'invalid-border':formControl.idNumber?.errors && submitted, 'valid-border':formControl.idNumber.valid}"
@@ -106,9 +140,9 @@
                   ID number required
                 </small>
               </div>
-            </div>
+            </div> -->
 
-            <label for="file" class="form-label">Upload ID</label>
+            <!-- <label for="file" class="form-label">Upload ID</label>
             <div class="mb-3">
               <input id="fileUpload" type="file" #upload (input)="uploadFile(upload)"
                 class="shadow-none rounded-3 form-control" accept=".png, .jpg, .jpeg" formControlName="uploadCard"
@@ -118,7 +152,7 @@
                   ID upload required
                 </small>
               </div>
-            </div>
+            </div> -->
 
             <!-- button -->
             <button class="btn btn-dark w-100 shadow-none  mt-3 p-2" type="submit">Continue</button>
