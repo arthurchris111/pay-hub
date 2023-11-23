@@ -72,8 +72,6 @@ export class CreateCardFormComponent {
     return this.cardForm.controls;
   }
 
-  cardType: any['giftcard'];
-
   // Cards: any = ['Voters ID', 'Ghana card'];
 
   // changeCard(e: any) {
