@@ -4,12 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/core/services/user/users.service';
 import { CollectionReference } from '@angular/fire/firestore';
-import {
-  ref,
-  uploadBytesResumable,
-  Storage,
-  getDownloadURL,
-} from '@angular/fire/storage';
+import { ref, uploadBytesResumable, Storage, getDownloadURL } from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { ProfileUser } from 'src/app/modal/user';
@@ -50,14 +45,10 @@ export class CreateCardFormComponent {
       lastName: ['', [Validators.required]],
       email: [
         '',
-        [
-          Validators.required,
-          Validators.email,
-          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
-        ],
+        [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$')],
       ],
       cardBrand: ['', [Validators.required]],
-      card: ['', [Validators.required]],
+      cardType: ['', [Validators.required]],
       amount: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       // date: ['', [Validators.required]],

@@ -13,7 +13,8 @@ import { HttpClient } from '@angular/common/http';
 export class UsersService {
   profileUserRef: AngularFirestoreCollection<ProfileUser>;
   private path = 'Users';
-  private apiUrl = 'sk.3fa53e1.e01662d11973064665dde16e4';
+  // private apiUrl = 'sk.3fa53e1.e01662d11973064665dde16e4';
+  private apiUrl = '';
 
   constructor(private db: AngularFirestore, private http: HttpClient) {
     this.profileUserRef = db.collection(this.path);

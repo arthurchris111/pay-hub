@@ -52,21 +52,21 @@
             <div class="form-item mb-3">
               <input type="text" autocomplete="off" id="cardBrand" name="cardBrand"
                 [ngClass]="{'invalid-border':formControl.cardBrand?.errors && submitted, 'valid-border':formControl.cardBrand.valid}"
-                class="form-control form-text-field  shadow-none" formControlName="cardBrand" placeholder="visa">
+                class="form-control form-text-field  shadow-none" formControlName="cardBrand" placeholder="">
               <div class="error" *ngIf="(cardForm.get('cardBrand')?.invalid && submitted)">
                 <small class="text-danger" *ngIf="cardForm.get('cardBrand')?.errors?.['required'] ">Card brand
                   required</small>
               </div>
             </div>
 
-            <label for="email" class="form-label">Card</label>
+            <label for="email" class="form-label">Card Type</label>
             <div class="form-item mb-3">
-              <input type="text" autocomplete="off" id="card" name="card"
-                [ngClass]="{'invalid-border':formControl.card?.errors && submitted, 'valid-border':formControl.card.valid}"
-                class="form-control form-text-field  shadow-none" formControlName="card" placeholder="giftcard">
-              <div class="error" *ngIf="(cardForm.get('card')?.invalid && submitted)">
-                <small class="text-danger" *ngIf="cardForm.get('card')?.errors?.['required'] ">Card brand
-                  required</small>
+              <input type="text" autocomplete="off" id="cardType" name="cardType"
+                [ngClass]="{'invalid-border':formControl.cardType?.errors && submitted, 'valid-border':formControl.cardType.valid}"
+                class="form-control form-text-field shadow-none" formControlName="cardType" placeholder="">
+              <div class="error" *ngIf="(cardForm.get('cardType')?.invalid && submitted)">
+                <small class="text-danger" *ngIf="cardForm.get('cardType')?.errors?.['required'] ">
+                  Card type required</small>
               </div>
             </div>
 
@@ -74,7 +74,7 @@
             <div class="form-item mb-3">
               <input type="text" autocomplete="off" id="amount" name="amount"
                 [ngClass]="{'invalid-border':formControl.amount?.errors && submitted, 'valid-border':formControl.amount.valid}"
-                class="form-control form-text-field  shadow-none" formControlName="amount" placeholder="1000">
+                class="form-control form-text-field  shadow-none" formControlName="amount" placeholder="">
               <div class="error" *ngIf="(cardForm.get('amount')?.invalid && submitted)">
                 <small class="text-danger" *ngIf="cardForm.get('amount')?.errors?.['required'] ">
                   Amount required
@@ -94,9 +94,8 @@
                   class="hide img-fluid" height="20" width="20" aria-hidden="true" *ngIf="show">
               </span>
               <div class="error" *ngIf="(cardForm.get('password')?.invalid && submitted)">
-                <small class="text-danger" *ngIf="cardForm.get('password')?.errors?.['required'] ">Password
-                  required
-                </small>
+                <small class="text-danger" *ngIf="cardForm.get('password')?.errors?.['required']">
+                  Password required</small>
                 <small class="text-danger" *ngIf="cardForm.get('password')?.errors?.['minlength']">
                   Characters must be more than 6
                 </small>
