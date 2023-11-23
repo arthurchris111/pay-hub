@@ -13,7 +13,7 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { InterceptorService } from './core/services/interceptor/interceptor.service';
+import { httpInterceptor } from './core/interceptor/http_interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,7 +34,7 @@ import { InterceptorService } from './core/services/interceptor/interceptor.serv
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: InterceptorService,
+      useClass: httpInterceptor,
       multi: true,
     },
   ],

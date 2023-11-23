@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ProfileUser } from '../../../modal/user';
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-} from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -13,8 +10,9 @@ import { HttpClient } from '@angular/common/http';
 export class UsersService {
   profileUserRef: AngularFirestoreCollection<ProfileUser>;
   private path = 'Users';
-  // private apiUrl = 'sk.3fa53e1.e01662d11973064665dde16e4';
-  private apiUrl = '';
+  private apiUrl = 'https://staging-api.flowertop.xyz/api/v1/virtualcards/create';
+
+  // https://staging-api.flowertop.xyz/dashboard/v1/compliance/progress/
 
   constructor(private db: AngularFirestore, private http: HttpClient) {
     this.profileUserRef = db.collection(this.path);

@@ -1,3 +1,4 @@
+import { HttpInterceptor } from '@angular/common/http';
 import { AuthService } from './../../../core/services/auth/auth.service';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -36,21 +37,20 @@ export class CreateCardFormComponent {
     private db: AngularFirestore,
     private toastr: ToastrService
   ) {
-    this.getImages();
+    // this.getImages();
   }
 
   buildCardForm(): void {
     this.cardForm = this.formBuilder.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      email: [
-        '',
-        [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$')],
-      ],
-      cardBrand: ['', [Validators.required]],
-      cardType: ['', [Validators.required]],
-      amount: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      firstName: ['Matthew', [Validators.required]],
+      lastName: ['Booth', [Validators.required]],
+      email: ['gidi@gmail.com', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$')]],
+      cardBrand: ['visa', [Validators.required]],
+      cardType: ['giftcard', [Validators.required]],
+      amount: ['1000', [Validators.required]],
+      reference: ['jadadkaaiudkkjahyyy111', [Validators.required]],
+
+      password: ['gidi@gmail.com', [Validators.required, Validators.minLength(6)]],
       // date: ['', [Validators.required]],
       // idNumber: ['', [Validators.required]],
       // cardType: ['', [Validators.required]],
@@ -71,6 +71,8 @@ export class CreateCardFormComponent {
   get formControl(): any {
     return this.cardForm.controls;
   }
+
+  cardType: any['giftcard'];
 
   // Cards: any = ['Voters ID', 'Ghana card'];
 
@@ -93,14 +95,14 @@ export class CreateCardFormComponent {
   //   }
   // }
 
-  private getImages(): void {
-    this.db
-      .collection(this.path)
-      .snapshotChanges()
-      .subscribe((res: any) => {
-        console.log('User', res);
-      });
-  }
+  // private getImages(): void {
+  //   this.db
+  //     .collection(this.path)
+  //     .snapshotChanges()
+  //     .subscribe((res: any) => {
+  //       console.log('User', res);
+  //     });
+  // }
 
   onSubmit() {
     this.submitted = true;
