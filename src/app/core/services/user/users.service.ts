@@ -18,7 +18,7 @@ export class UsersService {
     this.profileUserRef = db.collection(this.path);
   }
 
-  userDataToBitnob(user: ProfileUser): Observable<any> {
+  createCard(user: ProfileUser): Observable<any> {
     return this.http.post(this.apiUrl, user);
   }
 

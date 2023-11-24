@@ -2,9 +2,10 @@ export interface ProfileUser {
   // uid?: string;
   firstName?: string;
   lastName?: string;
-  email?: string;
+  customerEmail?: string;
   password?: string;
   cardBrand?: string;
-  amount?: number;
+  amount?: string;
   cardType?: string;
+  reference?: string;
 }

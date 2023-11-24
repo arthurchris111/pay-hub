@@ -29,9 +29,8 @@
                     [ngClass]="{'invalid-border':formControl.lastName?.errors && submitted, 'valid-border':formControl.lastName.valid}"
                     class="form-control form-text-field  shadow-none" formControlName="lastName" placeholder="">
                   <div class="error" *ngIf="(cardForm.get('lastName')?.invalid && submitted)">
-                    <small class="text-danger" *ngIf="cardForm.get('lastName')?.errors?.['required'] ">
-                      Last name required
-                    </small>
+                    <small class="text-danger" *ngIf="cardForm.get('lastName')?.errors?.['required'] "> Last name
+                      required</small>
                   </div>
                 </div>
               </div>
@@ -39,12 +38,14 @@
 
             <label for="email" class="form-label">Email</label>
             <div class="form-item mb-3">
-              <input type="text" autocomplete="off" id="email" name="email"
-                [ngClass]="{'invalid-border':formControl.email?.errors && submitted, 'valid-border':formControl.email.valid}"
-                class="form-control form-text-field  shadow-none" formControlName="email" placeholder="">
-              <div class="error" *ngIf="(cardForm.get('email')?.invalid && submitted)">
-                <small class="text-danger" *ngIf="cardForm.get('email')?.errors?.['required'] ">Email required</small>
-                <small class="text-danger" *ngIf="cardForm.get('email')?.errors?.['pattern']">Invalid email</small>
+              <input type="text" autocomplete="off" id="customerEmail" name="customerEmail"
+                [ngClass]="{'invalid-border':formControl.customerEmail?.errors && submitted, 'valid-border':formControl.customerEmail.valid}"
+                class="form-control form-text-field  shadow-none" formControlName="customerEmail" placeholder="">
+              <div class="error" *ngIf="(cardForm.get('customerEmail')?.invalid && submitted)">
+                <small class="text-danger" *ngIf="cardForm.get('customerEmail')?.errors?.['required'] ">Email
+                  required</small>
+                <small class="text-danger" *ngIf="cardForm.get('customerEmail')?.errors?.['pattern']">Invalid
+                  email</small>
               </div>
             </div>
 
@@ -92,7 +93,7 @@
 
             <label for="idNumber" class="form-label">Amount</label>
             <div class="form-item mb-3">
-              <input type="text" autocomplete="off" id="amount" name="amount"
+              <input type="number" autocomplete="off" id="amount" name="amount"
                 [ngClass]="{'invalid-border':formControl.amount?.errors && submitted, 'valid-border':formControl.amount.valid}"
                 class="form-control form-text-field  shadow-none" formControlName="amount" placeholder="">
               <div class="error" *ngIf="(cardForm.get('amount')?.invalid && submitted)">

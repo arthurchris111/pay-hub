@@ -44,12 +44,11 @@ export class CreateCardFormComponent {
     this.cardForm = this.formBuilder.group({
       firstName: ['Matthew', [Validators.required]],
       lastName: ['Booth', [Validators.required]],
-      email: ['gidi@gmail.com', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$')]],
+      customerEmail: ['gidi@gmail.com', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$')]],
       cardBrand: ['visa', [Validators.required]],
       cardType: ['giftcard', [Validators.required]],
-      amount: ['1000', [Validators.required]],
+      amount: ['', [Validators.required]],
       reference: ['jadadkaaiudkkjahyyy111', [Validators.required]],
-
       password: ['gidi@gmail.com', [Validators.required, Validators.minLength(6)]],
       // date: ['', [Validators.required]],
       // idNumber: ['', [Validators.required]],
@@ -111,7 +110,7 @@ export class CreateCardFormComponent {
     }
 
     //  Send data to bitnob to create card
-    this.usersService.userDataToBitnob(this.cardForm.value).subscribe(() => {
+    this.usersService.createCard(this.cardForm.value).subscribe(() => {
       console.log('data sent successfully'),
         (error: Error) => {
           console.error('Error sending data:', error);
@@ -121,7 +120,7 @@ export class CreateCardFormComponent {
     const { firstName, lastName, email, password } = this.cardForm.value;
 
     // Send firstName lastName,email and password to firebase
-    this.usersService.create({ firstName, lastName, email, password });
+    // this.usersService.create({ firstName, lastName, email, password });
 
     // signing up with email and password
     this.authService.signup(email, password).subscribe({
